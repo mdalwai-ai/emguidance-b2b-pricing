@@ -1,4 +1,4 @@
-# EMGuidance Academy — B2B Pricing Calculator
+# EMGuidance Training and Compliance Pricing
 
 A client-facing pricing calculator for the EMGuidance B2B Academy product. Helps prospective customers understand costs across three packages based on their team size.
 
