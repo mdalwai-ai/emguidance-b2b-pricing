@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EMGuidance Academy — B2B Pricing Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -12,31 +15,42 @@
     }
 
     :root {
-      --color-primary: #1A4D8F;
-      --color-primary-dark: #0D3370;
-      --color-accent: #00A86B;
-      --color-warning: #E8A000;
-      --color-danger: #CC2020;
-      --color-bg: #F5F7FA;
+      /* EMGuidance CI Primary Colours */
+      --color-dark-blue: #0E7CC1;
+      --color-light-blue: #71B5DD;
+      --color-dark-green: #74BBB9;
+      --color-light-green: #90E0D7;
+      /* EMGuidance CI Secondary Colours */
+      --color-dark-grey: #333333;
+      --color-grey: #929292;
+      --color-light-grey: #F3F3F4;
+      --color-yellow: #FADF9F;
+      --color-light-yellow: #FBECC4;
+      --color-error: #F25454;
+      /* Derived tokens */
+      --color-primary: var(--color-dark-blue);
+      --color-accent: var(--color-dark-green);
+      --color-bg: var(--color-light-grey);
       --color-card: #FFFFFF;
       --color-border: #DDE3ED;
-      --color-text: #1A1A2E;
-      --color-text-muted: #6B7280;
+      --color-text: var(--color-dark-grey);
+      --color-text-muted: var(--color-grey);
       --radius-card: 12px;
       --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
-      --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.14);
+      --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.12);
       --transition: all 0.2s ease;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.6;
     }
 
     header {
-      background: var(--color-primary);
+      background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-dark-blue) 100%);
       color: white;
       text-align: center;
       padding: 2.5rem 1rem;
@@ -50,7 +64,8 @@
 
     header p {
       font-size: 1rem;
-      opacity: 0.85;
+      font-weight: 300;
+      opacity: 0.9;
     }
 
     main {
@@ -68,11 +83,13 @@
     .input-section label {
       display: block;
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--color-dark-blue);
       margin-bottom: 0.5rem;
     }
 
     .input-section input {
+      font-family: 'Open Sans', sans-serif;
       width: 220px;
       padding: 0.75rem 1rem;
       font-size: 1.25rem;
@@ -84,19 +101,20 @@
 
     .input-section input:focus {
       outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.15);
+      border-color: var(--color-dark-blue);
+      box-shadow: 0 0 0 3px rgba(14, 124, 193, 0.2);
     }
 
     .hint {
       font-size: 0.85rem;
+      font-weight: 300;
       color: var(--color-text-muted);
       margin-top: 0.4rem;
     }
 
     .input-error {
       font-size: 0.85rem;
-      color: var(--color-danger);
+      color: var(--color-error);
       margin-top: 0.4rem;
       min-height: 1.2em;
     }
@@ -129,7 +147,7 @@
     .card.recommended {
       transform: translateY(-8px);
       box-shadow: var(--shadow-card-hover);
-      border: 2px solid var(--color-accent);
+      border: 2px solid var(--color-dark-green);
     }
 
     .recommended-badge {
@@ -138,7 +156,7 @@
 
     .card.recommended .recommended-badge {
       display: inline-block;
-      background: var(--color-accent);
+      background: linear-gradient(135deg, var(--color-light-green) 0%, var(--color-dark-green) 100%);
       color: white;
       font-size: 0.7rem;
       font-weight: 700;
@@ -152,11 +170,12 @@
     .card-header h2 {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-dark-blue);
     }
 
     .card-header .tagline {
       font-size: 0.85rem;
+      font-weight: 300;
       color: var(--color-text-muted);
     }
 
@@ -172,26 +191,28 @@
 
     .per-user-price {
       font-size: 2rem;
-      font-weight: 800;
-      color: var(--color-primary);
+      font-weight: 700;
+      color: var(--color-dark-blue);
       display: block;
       line-height: 1.2;
     }
 
     .per-user-label {
       font-size: 0.8rem;
+      font-weight: 300;
       color: var(--color-text-muted);
     }
 
     .total-cost {
       font-size: 0.9rem;
+      font-weight: 300;
       color: var(--color-text-muted);
       margin-top: 0.5rem;
     }
 
     .total-cost.active {
       color: var(--color-text);
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .annual-cost {
@@ -200,27 +221,27 @@
     }
 
     .contact-sales {
-      background: linear-gradient(135deg, #1A4D8F 0%, #0D3370 100%);
+      background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-dark-blue) 100%);
       color: white;
       padding: 1rem;
       border-radius: 8px;
       text-align: center;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.4;
     }
 
     .contact-sales small {
       display: block;
-      font-weight: 400;
-      opacity: 0.85;
+      font-weight: 300;
+      opacity: 0.9;
       margin-top: 0.25rem;
       font-size: 0.8rem;
     }
 
     .enterprise-warning {
-      background: #FFF8E1;
-      border: 1px solid var(--color-warning);
+      background: var(--color-light-yellow);
+      border: 1px solid var(--color-yellow);
       border-radius: 8px;
       padding: 0.6rem 0.75rem;
       font-size: 0.8rem;
@@ -242,6 +263,7 @@
 
     .feature-highlights li {
       font-size: 0.85rem;
+      font-weight: 400;
       color: var(--color-text);
       padding-left: 1.2em;
       position: relative;
@@ -251,14 +273,14 @@
       content: "\2713";
       position: absolute;
       left: 0;
-      color: var(--color-accent);
+      color: var(--color-dark-green);
       font-weight: 700;
     }
 
     .see-features {
       display: inline-block;
       font-size: 0.8rem;
-      color: var(--color-primary);
+      color: var(--color-dark-blue);
       text-decoration: none;
       margin-top: auto;
       padding-top: 0.5rem;
@@ -283,40 +305,41 @@
     }
 
     table th {
-      background: var(--color-primary);
+      background: var(--color-dark-blue);
       color: white;
       padding: 0.75rem 1rem;
       text-align: left;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     table th.col-enterprise {
-      background: var(--color-primary-dark);
+      background: #0a6aa8;
     }
 
     table tbody tr:nth-child(even) {
-      background: #F8FAFC;
+      background: var(--color-light-grey);
     }
 
     table td {
       padding: 0.65rem 1rem;
       border-bottom: 1px solid var(--color-border);
       font-size: 0.85rem;
+      font-weight: 400;
     }
 
     table td.highlight {
-      color: var(--color-primary);
-      font-weight: 600;
+      color: var(--color-dark-blue);
+      font-weight: 700;
     }
 
     .check {
-      color: var(--color-accent);
+      color: var(--color-dark-green);
       font-weight: 700;
     }
 
     .cross {
-      color: var(--color-danger);
+      color: var(--color-error);
     }
 
     /* Features Section */
@@ -327,7 +350,7 @@
     .features-section h2 {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-dark-blue);
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -337,6 +360,7 @@
       text-align: center;
       padding: 1.5rem;
       font-size: 0.8rem;
+      font-weight: 300;
       color: var(--color-text-muted);
       border-top: 1px solid var(--color-border);
     }
